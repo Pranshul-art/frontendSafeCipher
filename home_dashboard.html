@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FRONTEND SafeCipher </title>
+        <!-- <link rel="stylesheet" href="color.css"/> -->
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://kit.fontawesome.com/6742efa8ee.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" rel="stylesheet">
+      
+    </head>
+<body >
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-color: black;
+            padding-top: 20px;
+        }
+        * {
+            margin: 0;
+            margin-left: 0;
+             background-color: black; 
+        }
+        .topnav{
+            /*<!-- overflow: hidden; -->*/
+            background-color: #022D36;
+            margin-left: 0;
+        }
+        .active:hover{
+            background: #24242412;
+        }
+        .name a{
+            font-size: 50px;
+            font-family: "SafeCipher",cursive;
+            color: white; 
+            text-decoration: none;
+        }
+        .icon-bar a{
+            margin-left: 0;
+            margin-right: 0;
+            float:right;
+            display: block;
+            color:#0fb0d0;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            border-bottom: 3px solid transparent;
+        }
+        .name a:hover{
+            text-decoration: none;
+            color: #022D36;
+        }
+        .icon-bar a:hover{
+            border-bottom: 3px solid red;
+            color:aqua;
+            background: #24242412;
+        }
+        .icon-bar a.active{
+            border-bottom: 3px solid red;
+            background: #24242412;
+        }
+        li{
+            list-style: none;
+        }
+        .nav-item a{
+            color:#0fb0d0;
+            background-color: rgba(0,0,0,50%);
+            text-decoration: none;
+        }
+        .nav-menu{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+        }
+        .nav-link{
+            transition: 0.7s ease;
+        }
+        .nav-link:hover{
+            color: dodgerblue;
+        }
+        .hamburger{
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            -webkit-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+            background-color: white;
+        }
+        .navbar{
+            min-height: 70px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            /* padding: 0 24px; */
+            
+            float:left;
+        }
+            .hamburger{
+                display: block;
+            }
+            .hamburger.active.bar2{
+                opacity: 0%;
+            }
+            .hamburger.active.bar1{
+                transition: translate Y(8px) rotate(45deg);
+            }
+            .hamburger.active.bar3{
+                transition: translate Y(-8px) rotate(-45deg);
+            }
+            .nav-menu{
+                position:fixed;
+                left:-100%;
+                top: 70px;
+                gap:0;
+                flex-direction: column;
+                background-color: #262626;
+                width:50%;
+                text-align: center;
+                transition:0.4s;
+                margin-right: -60px;
+                margin-top: 30px;
+            }
+            .nav-item{
+                margin: 16px 0;
+            }
+            .nav-menu.active{
+                left:0% ;
+            }
+            .navbar a:hover{
+                background-color: #022D36;
+            }
+            .sidenav {
+                height: 100%;
+                width: 160px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                padding-top: 10px;
+            }
+              
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+                padding-top:100px;
+                
+                text-align: center;
+            }
+            .this{
+                background-color: #022D36;
+                margin-top: 40px;
+            }  
+            .sidenav a:hover {
+                color: #f1f1f1;
+                background-color: #022D36;
+            }
+        .image{
+            display: flex;
+            height: 86.57vh;
+        }
+        .btn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            padding: 7.5px 70px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration:none;
+            display:inline-block;
+            margin:-210px 0px;
+            border:2px solid rgb(45, 45, 92);
+        }
+        #icon{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            font-size: 25px;
+            
+            
+            margin-top: -345px;
+            border: none;
+            cursor: pointer;
+            margin-left: 735px;
+            text-align: right;
+            text-decoration:none;
+            display:inline-block;
+            animation-delay: 2ms;
+        }
+        #symbol{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            font-size: 25px;
+            transform: rotate(-80deg);
+            background-color: transparent;
+            color: white;
+            
+            width:30px;
+            border: none;
+            cursor: pointer;
+           
+            text-align: right;
+            text-decoration:none;
+            display:inline-block;
+            animation-delay: 2ms;
+        }
+        /*<!-- #knight{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            font-size: 250px;
+           
+            
+            background-color: transparent;
+            margin-top: 60px;
+            border: none;
+            cursor: pointer;
+            margin-left: -60px;
+            text-align: center;
+            text-decoration:none;
+            display:inline-block;
+            animation-delay: 2ms;
+        } -->*/
+        .btn a{
+            text-decoration:none;
+        }
+          
+        .btn:hover {
+            background-color: rgb(45, 45,92);
+        }    
+
+    </style>
+    <div class="container">
+        <div>
+            <div class="topnav">
+                <div class="head"  style="float: inline-left; padding-left:0%;" >
+                    <div class="navbar" style="font-family: sans-serif;">
+                        <ul class="nav-menu">
+                            <li class="nav-item">
+                                <a href="login_page.html" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Updates</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">About-Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Sign-Out</a>
+                            </li>
+                        </ul>
+                        <div class="hamburger" >
+                            <span class="bar1"></div>
+                            <span class="bar2"></div>
+                            <span class="bar3"></div>
+                        </div>
+                    </div>
+                    <span class="name" style="float: inline-start;"><a href="home_dashboard.html">SafeCipher</a></span>
+                    <span class="icon-bar" style="font-family: sans-serif;">
+                       
+                        <a href="#" >Feedback</a>
+                        <a  href="#">Help</a>
+                        <a href="Secure_T.html">Secure T</a>
+                        <a class="active" href="home_dashboard.html">Home</a>
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidenav">
+                <a href="home_dashboard.html" style="padding-top: 100px;" class="this"><i class="fa-solid fa-clapperboard" style="background-color: transparent;"></i>Dashboard</a>
+                <a href="home_scaning.html"  ><i class="fa-solid fa-barcode" style="background-color:transparent ; "></i>Scaning</a>
+                <a href="home_notification.html"><i class="fa-regular fa-bell" style="background-color:transparent"></i>Notifications</a>
+                <a href="home_setting.html"><i class="fa-solid fa-gears" style="background-color:transparent"></i>Settings</a>
+            </div>
+        </div>
+        <img src="web.jpg" class="image" style="float: auto; width:100%; "/>
+        <i class="fa fa-circle-o-notch fa-spin" id="icon" style="color:#0ebde0 ; float:right;"></i>
+        <i class="fa-solid fa-slash fa-flip-vertical" id="symbol" style=" margin-left: -545px;margin-top: -332.5553px;"></i>
+        <i class="fa-solid fa-slash fa-flip-vertical" id="symbol" style=" margin-left: -545px;margin-top: -331.5342px;"></i>
+        <i class="fa-solid fa-slash fa-flip-vertical" id="symbol" style=" margin-left: -532.4378px;margin-top: -294.4px;"></i>
+        <i class="fa-solid fa-slash fa-flip-vertical" id="symbol" style=" margin-left: -532.9365px;margin-top: -293.454px;"></i>
+        <!-- <i class="fa-solid fa-lines-leaning" id="symbol" style="margin-left: -582.9365px;margin-top: -310.754px; transform:rotate(365deg);font-size:40px;"></i> -->
+        <!-- <i class="fa-solid fa-chess-knight" id="knight"></i> -->
+        <button class="btn"><a href="#">    
+            DEPLOY!</a></button>
+    </div>
+
+    <script>
+        const hamburger =document.querySelector(".hamburger")
+        const navMenu =document.querySelector(".nav-menu")
+        hamburger.addEventListener('click',()=>{
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        })
+        </script>
+</body>
+</html>
